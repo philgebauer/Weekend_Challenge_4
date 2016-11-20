@@ -94,7 +94,8 @@ router.put('/:id', function(req, res) {
     }
 
     client.query(
-      'UPDATE todo SET title=$1, description=$2, WHERE id=$3',
+      "UPDATE todos SET title=$1, description=$2" +
+       "WHERE id=$3",
       // array of values to use in the query above
       [todo.title, todo.description, todoID],
       function(err, result) {

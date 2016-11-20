@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     $('#taskSubmit').on('click', function (){
       postTodos();
+      $('#todoForm').find('input').val('');
     });
 
     $("#todo-list").on('click', '.delete', deleteTodo);
@@ -99,8 +100,8 @@ function appendTodos(todos) {
     $el.data('id', todo.id);
 
     $el.append('<input type="text" name="title" value="' + todo.title + '" />');
-    $el.append('<input type="text" name="author" value="' + todo.description + '" />');
-    // $el.append('<input type="text" name="genre" value="' + book.genre + '" />');
+    $el.append('<input type="text" name="description" value="' + todo.description + '" />');
+;
 
     $el.append('<button class="update">Update</button>');
     $el.append('<button class="delete">Delete</button>');
