@@ -11,6 +11,8 @@ $(document).ready(function () {
 
     $("#todo-list").on('click', '.update', updateTodos);
 
+    $("#todo-list").on('click', '.complete', completeTodo);
+
 });
 
 function getTodos() {
@@ -25,6 +27,7 @@ function getTodos() {
     }
   });
 }
+
 
 function postTodos() {
   event.preventDefault();
@@ -89,21 +92,33 @@ function updateTodos() {
   });
 }
 
+function completeTodo () {
+
+  $(this).parent().removeClass('incomplete').addClass('completed');
+
+  var id = $(this).parent().data('id');
+
+
+}
+
 function appendTodos(todos) {
   $("#todo-list").empty();
+  $("#finished-list").empty();
+
 
   for (var i = 0; i < todos.length; i++) {
     var todo = todos[i];
-    $("#todo-list").append('<div class="row todo"></div>');
+    $("#todo-list").append('<div class="row incomplete"></div>');
     $el = $('#todo-list').children().last();
 
     $el.data('id', todo.id);
 
     $el.append('<input type="text" name="title" value="' + todo.title + '" />');
     $el.append('<input type="text" name="description" value="' + todo.description + '" />');
-;
-
     $el.append('<button class="update">Update</button>');
     $el.append('<button class="delete">Delete</button>');
-  }
+    $el.append('<button class="complete">Complete</button>');
+
+
+    }
 }

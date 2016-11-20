@@ -13,6 +13,10 @@ h2 {
   padding: 10px;
 }
 
-.row-todo {
-  background-color: magenta; 
+.incomplete {
+  background-color: magenta;
+}
+
+.completed {
+  background-color: green;
 }
