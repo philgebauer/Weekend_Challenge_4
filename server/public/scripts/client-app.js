@@ -2,11 +2,12 @@ $(document).ready(function () {
 
     getTodos();
 
-    // add a book
-    $('#Tasksubmit').on('click', postTodos);
-    // delete a book
+    $('#taskSubmit').on('click', function (){
+      postTodos();
+    });
+
     $("#todo-list").on('click', '.delete', deleteTodo);
-    // update a book
+
     $("#todo-list").on('click', '.update', updateTodos);
 
 });
@@ -36,9 +37,10 @@ function postTodos() {
   $.ajax({
     type: 'POST',
     url: '/todo',
-    data: todos,
-    success: function(todos) {
+    data: todo,
+    success: function(response) {
       getTodos();
+      console.log(response);
     },
     error: function() {
       console.log('could not post a new task');
@@ -76,7 +78,7 @@ function updateTodos() {
   $.ajax({
     type: 'PUT',
     url: '/todo/' + id,
-    data: todo,
+    data: todos,
     success: function(todos) {
       getTodos();
     },
